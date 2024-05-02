@@ -61,7 +61,7 @@ setInterval(clock, 1000);
 // for ticking sound
 
 function playAudio() {
-    var audio = new Audio('./audio.mp3'); 
+    var audio = new Audio('audio.mp3'); 
     audio.loop = true;
     audio.play();
    
@@ -69,7 +69,7 @@ function playAudio() {
   playAudio();
   
   
-  setInterval(playAudio,1000);
+/*   setInterval(playAudio,1000); */
 
 
 
