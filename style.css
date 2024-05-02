@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #2f3c7e;
+  animation: flash 60s infinite alternate;
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    background-color: #293053;
+  }
+  50% {
+    background-color: #242323;
+  }
+}
+#clock {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+#hrDots,
+#minDots,
+#secDots {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+#hrDots::before,
+#minDots::before,
+#secDots::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25), inset 5px 5px 15px rgba(0, 0, 0, 0.5),
+    inset 5px 5px 25px rgba(182, 178, 178, 0.2),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75),
+    inset -5px -5px 25px rgba(0, 0, 0, 0.2), 5px 5px 15px rgba(0, 0, 0, 0.5),
+    5px 5px 25px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 700px) {
+  #clock {
+    gap: 20px;
+  }
+
+  #hrDots,
+  #minDots,
+  #secDots {
+    width: 200px;
+    height: 200px;
+  }
+  #clock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+}
+#hrDots h2,
+#minDots h2,
+#secDots h2 {
+  color: var(--clr);
+  text-align: center;
+  inset: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#hrDots h2 span,
+#minDots h2 span,
+#secDots h2 span {
+  letter-spacing: 0.1em;
+  position: absolute;
+  font-size: 0.7em;
+  font-weight: 500;
+  bottom: 65px;
+  text-transform: uppercase;
+}
+#secDots b {
+  /* for amPm text */
+  position: absolute;
+  display: inline;
+  font-size: 1em;
+  color: #ffff;
+  transform: translate(155px, 90px);
+}
+#secDots .dot,
+#minDots .dot,
+#hrDots .dot {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 3px;
+  background: var(--clr);
+  transform-origin: 100px;
+  rotate: 90deg;
+}
+#secDots .active.dot,
+#minDots .active.dot,
+#hrDots .active.dot {
+  background: var(--clr);
+  box-shadow: 0 0 5px var(--clr), 0 0 15px var(--clr), 0 0 25px var(--clr),
+    0 0 35px var(--clr), 0 0 45px var(--clr), 0 0 55px var(--clr);
+}
+#secDots .active.dot ~ .dot,
+#minDots .active.dot ~ .dot,
+#hrDots .active.dot ~ .dot {
+  background: #3b488d;
+}
+#secDots .dot:nth-child(5n + 5),
+#minDots .dot:nth-child(5n + 5) {
+  width: 20px;
+}
+#hrDots .dot:nth-child(3n + 3) {
+  width: 20px;
+}
+#hrDots .dot ::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--clr);
+  box-shadow: 1.5px 9px var(--clr), 4px 18px var(--clr), 7px 27px var(--clr);
+}
+#hrDots .dot.active ~ .dot::before {
+  background: var(--clr);
+  box-shadow: 1.5px 9px var(--clr), 4px 18px var(--clr), 7px 27px var(--clr);
+}
